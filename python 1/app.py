@@ -1,19 +1,17 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask import send_file
 from io import BytesIO
 from flask import Response
-import os
-
 import pymysql
+import os  # Added for port configuration
 
 pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = 'your_secret_key'  # Consider using environment variable in production
 
 # Configure MySQL database URI (use XAMPP's MySQL)
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:@localhost/musiclab"
@@ -499,9 +497,10 @@ def forgetpass():
 
     return render_template("forgetpass.html")
 
+application = app
+# ===========================================
 
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()  # Ensure the database schema is created
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 10000)), debug=False)
-
