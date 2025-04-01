@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicLab | Home</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="{{ url_for('static', filename='audio/lofi-girl-309226.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="music-control">
+        <button id="musicToggle">🔊 Play Music</button>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
+    <!-- Animated Music Background -->
+    <div class="music-background" id="musicBackground"></div>
+    <div class="sound-waves"></div>
+
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-top">
+            <div class="social-media">
+                <span class="follow-text">Follow Us:</span>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="static/logo1.png" alt="MusicLab Logo">
+        </div>
+
+        <div class="inner-main-nav">
+            <ul>
+                <li><a href="{{ url_for('home') }}" class="{% if request.path == url_for('home') %}active{% endif %}"class="nav-link active">HOME</a></li>
+                <li><a href="{{ url_for('view') }}" class="{% if request.path == url_for('view') %}active{% endif %}"class="nav-link">GIGS</a></li>
+                <li><a href="{{ url_for('colab') }}" class="{% if request.path == url_for('colab') %}active{% endif %}"class="nav-link">COLLAB</a></li>
+                <li><a href="{{ url_for('me') }}" class="{% if request.path == url_for('me') %}active{% endif %}"class="nav-link">ME</a></li>
+                <li><a href="{{ url_for('about') }}" class="{% if request.path == url_for('about') %}active{% endif %}"class="nav-link">ABOUT</a></li>
+
+                {% if 'email' in session %}
+                    <li><a href="{{ url_for('logout') }}" class="{% if request.path == url_for('logout') %}active{% endif %}">LOGOUT</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}" class="{% if request.path == url_for('login') %}active{% endif %}">LOGIN</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="hero-content animate__animated animate__fadeIn">
+        <h1>Welcome to MusicLab</h1>
+        <p class="tagline">Connect. Create. Collaborate.</p>
+        
+        <div class="cta-buttons">
+            <a href="{{ url_for('hire') }}" class="cta-button">HIRE</a>
+            <a href="{{ url_for('fill') }}" class="cta-button secondary">COLLABORATE</a>
+        </div>
+    </main>
+
+    <!-- Interactive Piano Keys -->
+    <div class="piano-keys">
+        <div class="key white" data-note="C" data-key="a"></div>
+        <div class="key black" data-note="C#" data-key="w"></div>
+        <div class="key white" data-note="D" data-key="s"></div>
+        <div class="key black" data-note="D#" data-key="e"></div>
+        <div class="key white" data-note="E" data-key="d"></div>
+        <div class="key white" data-note="F" data-key="f"></div>
+        <div class="key black" data-note="F#" data-key="t"></div>
+        <div class="key white" data-note="G" data-key="g"></div>
+        <div class="key black" data-note="G#" data-key="y"></div>
+        <div class="key white" data-note="A" data-key="h"></div>
+        <div class="key black" data-note="A#" data-key="u"></div>
+        <div class="key white" data-note="B" data-key="j"></div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section location">
+                <a href="https://www.google.com/maps/place/Pillai+College+of+Engineering,+New+Panvel+(Autonomous)/@18.990201,73.1276701,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7e866de88667f:0xc1c5d5badc610f5f!8m2!3d18.990201!4d73.1276701!16s%2Fm%2F0gjcvbf?entry=ttu" 
+                   target="_blank" class="location-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Pillai College of Engineering, New Panvel</span>
+                </a>
+            </div>
+            <div class="footer-section copyright">
+                &copy; <span id="year"></span> MusicLab. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Interactive elements effect
+        const interactiveElements = document.querySelectorAll('a, button, .key');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+                cursorFollower.classList.add('active');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+                cursorFollower.classList.remove('active');
+            });
+            el.addEventListener('mousedown', () => {
+                cursor.classList.add('click');
+            });
+            el.addEventListener('mouseup', () => {
+                cursor.classList.remove('click');
+            });
+        });
+
+// Play note function
+        function playNote(note) {
+            const audio = new Audio(noteSounds[note]);
+            audio.volume = backgroundMusic.volume;
+            audio.play().catch(error => {
+                console.error('Note playback failed:', error);
+            });
+            
+            // Find and highlight the corresponding key
+            const keyElement = document.querySelector(`.key[data-note="${note}"]`);
+            if (keyElement) {
+                keyElement.classList.add('pressed');
+                setTimeout(() => {
+                    keyElement.classList.remove('pressed');
+                }, 200);
+            }
+        }
+
+        // Background Music
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const volumeSlider = document.getElementById('volumeSlider');
+        let isPlaying = false;
+
+        // Set initial volume
+        backgroundMusic.volume = volumeSlider.value;
+
+        // Update volume when slider changes
+        volumeSlider.addEventListener('input', () => {
+            backgroundMusic.volume = volumeSlider.value;
+        });
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = '🔊 Play Music';
+            } else {
+                backgroundMusic.play()
+                    .then(() => {
+                        musicToggle.textContent = '🔇 Pause Music';
+                    })
+                    .catch(error => {
+                        console.error('Audio playback failed:', error);
+                        alert('Audio playback failed. Please interact with the page first.');
+                    });
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Piano Keys Interaction
+        const keys = document.querySelectorAll('.key');
+        const noteSounds = {
+            'C': "{{ url_for('static', filename='audio/piano/C3.mp3') }}",
+            'C#': "{{ url_for('static', filename='audio/piano/C4.mp3') }}",
+            'D': "{{ url_for('static', filename='audio/piano/D3.mp3') }}",
+            'D#': "{{ url_for('static', filename='audio/piano/Db3.mp3') }}",
+            'E': "{{ url_for('static', filename='audio/piano/E3.mp3') }}",
+            'F': "{{ url_for('static', filename='audio/piano/F3.mp3') }}",
+            'F#': "{{ url_for('static', filename='audio/piano/F4.mp3') }}",
+            'G': "{{ url_for('static', filename='audio/piano/G3.mp3') }}",
+            'G#': "{{ url_for('static', filename='audio/piano/Gb3.mp3') }}",
+            'A': "{{ url_for('static', filename='audio/piano/A3.mp3') }}",
+            'A#': "{{ url_for('static', filename='audio/piano/Ab3.mp3') }}",
+            'B': "{{ url_for('static', filename='audio/piano/B3.mp3') }}"
+        };
+
+        // Key to note mapping
+        const keyToNote = {
+            'a': 'C',
+            'w': 'C#',
+            's': 'D',
+            'e': 'D#',
+            'd': 'E',
+            'f': 'F',
+            't': 'F#',
+            'g': 'G',
+            'y': 'G#',
+            'h': 'A',
+            'u': 'A#',
+            'j': 'B'
+        };
+
+        // Play note function
+        function playNote(note) {
+            const audio = new Audio(noteSounds[note]);
+            audio.volume = backgroundMusic.volume;
+            audio.play().catch(error => {
+                console.error('Note playback failed:', error);
+            });
+            
+            // Find and highlight the corresponding key
+            const keyElement = document.querySelector(`.key[data-note="${note}"]`);
+            if (keyElement) {
+                keyElement.classList.add('pressed');
+                setTimeout(() => {
+                    keyElement.classList.remove('pressed');
+                }, 200);
+            }
+        }
+
+        // Click event for piano keys
+        keys.forEach(key => {
+            key.addEventListener('click', () => {
+                const note = key.getAttribute('data-note');
+                playNote(note);
+            });
+        });
+
+        // Keyboard event listener
+        document.addEventListener('keydown', (e) => {
+            const key = e.key.toLowerCase();
+            if (keyToNote[key]) {
+                e.preventDefault(); // Prevent default behavior for these keys
+                playNote(keyToNote[key]);
+            }
+        });
+
+        // Enhanced Music Particles
+        const background = document.getElementById('musicBackground');
+        const notes = ['♪', '♫', '♩', '♬', '♭', '♮', '♯'];
+        const colors = ['#4a2b0a', '#be1d1d', '#ecc0cb', '#19aedf'];
+        
+        function createNote() {
+            const note = document.createElement('div');
+            note.className = 'music-particle';
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.style.left = Math.random() * 100 + 'vw';
+            note.style.color = colors[Math.floor(Math.random() * colors.length)];
+            note.style.animationDuration = (8 + Math.random() * 12) + 's';
+            note.style.fontSize = (20 + Math.random() * 40) + 'px';
+            note.style.opacity = 0.2 + Math.random() * 0.5;
+            background.appendChild(note);
+            
+            // Remove note after animation completes
+            setTimeout(() => {
+                note.remove();
+            }, 20000);
+        }
+        
+        // Create initial notes
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createNote, i * 300);
+        }
+        
+        // Continue creating notes
+        setInterval(createNote, 800);
+
+        // Sound waves visualization
+        const soundWaves = document.querySelector('.sound-waves');
+        function createWave() {
+            const wave = document.createElement('div');
+            wave.className = 'wave';
+            wave.style.left = Math.random() * 100 + 'vw';
+            wave.style.height = (10 + Math.random() * 50) + 'px';
+            wave.style.width = (2 + Math.random() * 5) + 'px';
+            soundWaves.appendChild(wave);
+            
+            setTimeout(() => {
+                wave.remove();
+            }, 3000);
+        }
+        
+        setInterval(createWave, 100);
+
+        // Set copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

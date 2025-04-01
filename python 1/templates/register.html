@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+  <!-- Audio Element -->
+  <audio id="backgroundMusic" loop>
+    <source src="{{ url_for('static', filename='audio/lofi-girl-309226.mp3') }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<div class="music-control">
+    <button id="musicToggle">🔊 Play Music</button>
+    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.5">
+</div>
+  <section>
+    <form autocomplete="off" class="form" action="{{ url_for('register') }}" method="POST">
+      <p class="title">Register</p>
+      <div class="form-group">
+        <label>
+          <input type="text" name="name" required>
+          <span>Name</span>
+        </label>
+        <label>
+          <input type="number" name="age" min="1" max="200" required>
+          <span>Age</span>
+        </label>
+        <label>
+          <input type="tel" name="phone" pattern="[0-9]{10}" required>
+          <span>Phone Number</span>
+      </label>              
+      </div>
+      <div class="form-group">
+        <label>
+          <span>
+          <select id="level1" name="type" class="type-select" required>
+            <option value="" disabled selected>Type</option>
+            <option value="Vocalist">Vocalist</option>
+            <option value="Instrumentalist">Instrumentalist</option>
+            </select>
+            </span>
+        </label>
+        <label>
+          <select id="level2" name="genre" class="type-select" required>
+            <option value="" disabled selected>Genre</option>
+            </select>
+        </label>
+        <label>
+          <select name="instrument" class="type-select" required>
+            <option value="" disabled selected>Details</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+
+        <label>
+          <input type="email" name="email" required>
+          <span>Email</span>
+        </label>
+
+        <label>
+          <input type="password" name="password" required>
+          <span>Password</span>
+        </label>
+        <label>
+          <input type="password" name="confirm_password" required>
+          <span>Confirm Password</span>
+        </label>
+      </div>
+      
+      <button class="submit" type="submit">Submit</button>
+      <p class="signin">
+        Already have an Account?
+        <a href="{{ url_for('login') }}">Signin</a>
+      </p>
+    </form>
+  </section>
+  <script>
+    // Background Music Control
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const volumeSlider = document.getElementById('volumeSlider');
+    let isPlaying = false;
+
+    // Set initial volume
+    backgroundMusic.volume = volumeSlider.value;
+
+    // Update volume when slider changes
+    volumeSlider.addEventListener('input', () => {
+        backgroundMusic.volume = volumeSlider.value;
+    });
+
+    musicToggle.addEventListener('click', () => {
+        if (isPlaying) {
+            backgroundMusic.pause();
+            musicToggle.textContent = '🔊 Play Music';
+        } else {
+            backgroundMusic.play()
+                .then(() => {
+                    musicToggle.textContent = '🔇 Pause Music';
+                })
+                .catch(error => {
+                    console.error('Audio playback failed:', error);
+                });
+        }
+        isPlaying = !isPlaying;
+    });
+</script>
+  <script src="{{ url_for('static', filename='idk.js') }}"></script>
+</body>
+</html>

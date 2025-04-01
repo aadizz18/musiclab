@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicLab</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fill.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body>
+    <!-- Go Back Button -->
+    <button class="go-back-btn" onclick="window.history.back()">Go Back</button>
+
+    {% if 'email' in session %}
+        <!-- Form for collaboration submission (only visible if user is logged in) -->
+        <form autocomplete="off" class="form" id="gigForm" method="POST" action="{{ url_for('submit_collaboration') }}">
+            <p class="title">Collaborate</p>
+            <div class="form-group">
+                <label>
+                    <input type="text" name="artist_name" placeholder="Name of artist" required>
+                </label>
+                <label>
+                    <input type="text" name="genre" placeholder="Genre of music" required>
+                </label>
+                <label>
+                    <input type="text" name="work_type" placeholder="Type of work" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="text" name="location" placeholder="Location" required>
+                </label>
+                <label>
+                    <input type="text" name="requirement" placeholder="Requirement" required>
+                </label>
+                <label>
+                    <input type="url" name="artist_profile" placeholder="Your artist profile (Optional)">
+                </label>
+            </div>
+            <button class="submit" type="submit">Submit</button>
+            <p class="signin">view colabs?
+                <a href="{{ url_for('colab') }}" class="view">Colabs</a>
+            </p>
+        </form>
+    {% else %}
+        <!-- Display a login prompt if the user is not logged in -->
+        <div class="login-prompt">
+            <p>Please <a href="{{ url_for('login') }}">log in</a> to submit a collaboration.</p>
+        </div>
+    {% endif %}
+</body>
+</html>

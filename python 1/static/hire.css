@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Montserrat:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+li, a, button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+.lg1 {
+    font-weight: 1000;
+    font-size: 1.5rem;
+    color: #ecc0cb;
+}
+
+/* Body setup for centering the form */
+body {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    height: 100vh;            /* Full viewport height */
+    background-color: #ffe4b2; /* Optional background color */
+    margin: 0;                /* Remove default margin */
+}
+
+/* Form styling */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 800px;
+    height: 500px;
+    background: rgba(169, 169, 169, 0.2);  /* Changed to a grey color */
+    backdrop-filter: blur(25px);
+    padding: 34px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+  font-size: 28px;
+  color:#000;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  margin-bottom: 35px; /* Reduced gap between title and form box */
+}
+
+.form-group {
+    display: flex;
+    justify-content:center;
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.form input {
+    width: 100%;
+    height: 50%;
+    padding: 15px;  /* Increased padding for larger input boxes */
+    font-size: 16px;  /* Increase text size */
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
+}
+
+.form label {
+    flex: 1;
+    position: relative;
+}
+
+.submit {
+    border: none;
+    outline: none;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 10px;
+    color: #000;
+    font-size: 16px;
+    transform: 0.3s ease;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.submit:hover {
+    background: rgba(0,0,0,0.25);
+}
+.view {
+    display: inline-block;
+    color: rgb(128, 38, 232);   /* Text color */
+    font-size: 16px;            /* Font size */
+    text-align: center;         /* Center text */
+    text-decoration: none;      /* Remove underline */
+    border-radius: 1px;         /* Rounded corners */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+.view:hover {
+    color: #300842;             /* Change text color on hover */
+}
+/* Remove margin from the <p> tag to reduce the gap between the text and button */
+.signin {
+    margin-bottom: 0;           /* Remove bottom margin to reduce gap */
+}
+
+/* Style for the flash messages */
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+.flash-message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.flash-message.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.flash-message.danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.flash-message.warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+.go-back-btn {
+    position: absolute;
+    top: 20px; /* Distance from top of the page */
+    left: 20px; /* Distance from left of the page */
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.go-back-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Center the login button in the container */
+/* Center the login button in the container */
+/* Style for the login prompt */
+.login-prompt p {
+    font-size: 16px; /* Adjust font size of the prompt text */
+    color: #333; /* Dark color for the text */
+    text-align: center; /* Center the text */
+}
+
+/* Style for the login link */
+.login-prompt a {
+    color: #e74c3c; /* Red color for the login link */
+    font-weight: bold; /* Make the login link bold */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Hover effect for the login link */
+.login-prompt a:hover {
+    color: #300842; /* Darker red color on hover */
+   
+}
+/* Music Control Styles */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#musicToggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+}
+
+#musicToggle:hover {
+    transform: scale(1.05);
+}
+
+.volume-slider {
+    width: 80px;
+    -webkit-appearance: none;
+    appearance: none;
+
+    height: 4px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.volume-slider:hover {
+    opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .music-control {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .volume-slider {
+        width: 60px;
+    }
+}

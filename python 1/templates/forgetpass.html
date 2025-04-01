@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='forgetpass.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="{{ url_for('forgetpass') }}" method="POST">
+                    <h2>Reset Password</h2>
+                    <div class="input-box">
+                        <img src="https://cdn-icons-png.flaticon.com/512/893/893247.png" alt="email" width="6%">
+                        <input type="email" name="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-box">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3427/3427189.png" alt="password" width="6%">
+                        <input type="password" name="new_password" required>
+                        <label for="new_password">New Password</label>
+                    </div>
+                    <div class="input-box">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3427/3427189.png" alt="password" width="6%">
+                        <input type="password" name="confirm_password" required>
+                        <label for="confirm_password">Confirm New Password</label>
+                    </div>
+                    <button class="raise-this" type="submit">Reset Password</button>
+                    <div class="register">
+                        <p>Remember your password? <a href="{{ url_for('login') }}">Login here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Interactive elements effect
+        const interactiveElements = document.querySelectorAll('a, button, input, .raise-this');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+                cursorFollower.classList.add('active');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+                cursorFollower.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

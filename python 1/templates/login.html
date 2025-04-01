@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="{{ url_for('static', filename='audio/lofi-girl-309226.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="music-control">
+        <button id="musicToggle">🔊 Play Music</button>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="{{ url_for('login') }}" method="POST">
+                    <h2>Login</h2>
+                    <div class="input-box">
+                        <img src="https://cdn-icons-png.flaticon.com/512/893/893247.png" alt="email" width="6%">
+                        <input type="email" name="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-box">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3427/3427189.png" alt="password" width="6%">
+                        <input type="password" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="forgot">
+                        <label for="remember"><input type="checkbox" name="remember">Remember Me! <a href="{{ url_for('forgetpass') }}">Forgot Password?</a></label>
+                    </div>
+                    <button class="raise-this" type="submit">Log in</button>
+                    <div class="register">
+                        <p>Don't have an Account? <a href="{{ url_for('register') }}">Sign up here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Background Music Control
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const volumeSlider = document.getElementById('volumeSlider');
+        let isPlaying = false;
+
+        // Set initial volume
+        backgroundMusic.volume = volumeSlider.value;
+
+        // Update volume when slider changes
+        volumeSlider.addEventListener('input', () => {
+            backgroundMusic.volume = volumeSlider.value;
+        });
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = '🔊 Play Music';
+            } else {
+                backgroundMusic.play()
+                    .then(() => {
+                        musicToggle.textContent = '🔇 Pause Music';
+                    })
+                    .catch(error => {
+                        console.error('Audio playback failed:', error);
+                    });
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>

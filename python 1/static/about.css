@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Montserrat:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+body {
+    background-image: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHZuM2I1NjB4d2Rmbm5yc3kxN2tkNGZoMHZ2a3JzemY0aGpjd3FuZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/0h5jTZ5lOrUHPFRslA/giphy.gif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.inner-main-nav {
+    max-width: 2000px;
+    margin: auto;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 2;
+}
+
+.inner-main-nav ul {
+    text-align: right;
+    margin-left: 330px;
+    margin-right: 330px;
+    padding: 25px 0;
+}
+
+.inner-main-nav ul li a:hover {
+    color: #be1d1d;
+    transition: color 0.3s ease;
+}
+
+.inner-main-nav ul li {
+    float: none;
+    display: inline-block;
+}
+
+.inner-main-nav ul li:nth-child(1),
+.inner-main-nav ul li:nth-child(2),
+.inner-main-nav ul li:nth-child(3) {
+    float: left;
+}
+
+.inner-main-nav ul li a {
+    margin: 0 25px;
+    text-decoration: none;
+    color: #4a2b0a;
+    font-weight: 500;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo img {
+    width: 100%;
+}
+
+main {
+    flex: 1;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+
+.services-container {
+    text-align: center;
+    padding: 50px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.service-boxes {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-box {
+    background: rgba(255, 207, 182, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+    padding: 50px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.service-box img {
+    width: 40%;
+    height: 40%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.service-box h3 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.service-box p {
+    font-size: 1rem;
+    color: #2c2929;
+    margin-top: 10px;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+}
+
+.about-section {
+    margin-top: 50px;
+    text-align: left;  /* Align text to the left */
+    width: 100%;       /* Make the section take up the full width */
+    padding: 0 10px;   /* Add some padding on the sides to prevent the text from touching the edge of the screen */
+}
+
+.about-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.8;
+    margin: 0;
+    width: 100%;  /* Ensure the paragraph takes the full width */
+    padding: 0 10px;  /* Add padding on the sides for better readability */
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .service-box {
+        width: 45%;
+    }
+
+    .about-section {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .inner-main-nav ul {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-box {
+        width: 100%;
+    }
+
+    .inner-main-nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .inner-main-nav ul {
+        margin-left: 10px;
+        margin-right: 10px;
+        text-align: center;
+    }
+
+    .inner-main-nav ul li a {
+        font-size: 1rem;
+    }
+
+    .inner-main-nav ul li:nth-child(1),
+    .inner-main-nav ul li:nth-child(2),
+    .inner-main-nav ul li:nth-child(3) {
+        float: none;
+        display: block;
+    }
+
+    .about-section {
+        padding: 15px;
+    }
+
+    .social-links {
+        gap: 5px;
+    }
+
+    .social-links a {
+        font-size: 1.5rem;
+    }
+}
+
+/* Existing CSS */
+
+/* New Styles for Contact Us Button */
+.contact-btn-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+}
+
+.contact-btn {
+    background-color: rgba(255, 156, 103, 0.95);
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: rgba(252, 108, 31, 0.95);
+}
+
+.inner-main-nav ul li a.active {
+    color: red; /* Change the link color to red */
+    font-weight: bold; /* Optional: Make the active link bold for emphasis */
+}
+
+/* Additional hover effect if needed */
+.inner-main-nav ul li a:hover {
+    color: #be1d1d;
+    transition: color 0.3s ease;
+}
+.logo img:hover {
+    transform: rotate(10deg) scale(1.1);
+    filter: drop-shadow(0 0 5px rgba(190, 29, 29, 0.3));
+  }
+/* Music Control Styles */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#musicToggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+}
+
+#musicToggle:hover {
+    transform: scale(1.05);
+}
+
+.volume-slider {
+    width: 80px;
+    -webkit-appearance: none;
+    appearance: none;
+
+    height: 4px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.volume-slider:hover {
+    opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .music-control {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .volume-slider {
+        width: 60px;
+    }
+}

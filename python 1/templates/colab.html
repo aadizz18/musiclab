@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicLab | Collaborations</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='colab.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="static/logo1.png" alt="">
+        </div>
+        <div class="inner-main-nav">
+            <ul>
+                <li><a href="{{ url_for('home') }}" class="{% if request.path == url_for('home') %}active{% endif %}">HOME</a></li>
+                <li><a href="{{ url_for('view') }}" class="{% if request.path == url_for('view') %}active{% endif %}">GIGS</a></li>
+                <li><a href="{{ url_for('colab') }}" class="{% if request.path == url_for('colab') %}active{% endif %}">COLLAB</a></li>
+                <li><a href="{{ url_for('me') }}" class="{% if request.path == url_for('me') %}active{% endif %}">ME</a></li>
+                <li><a href="{{ url_for('about') }}" class="{% if request.path == url_for('about') %}active{% endif %}">ABOUT</a></li>
+                
+                <!-- Conditionally render 'Login' or 'Logout' based on user session -->
+                {% if 'email' in session %}
+                    <li><a href="{{ url_for('logout') }}" class="{% if request.path == url_for('logout') %}active{% endif %}">LOGOUT</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}" class="{% if request.path == url_for('login') %}active{% endif %}">LOGIN</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+
+    <div class="collaboration-container">
+        <h1>Collaboration Opportunities</h1>
+    
+        {% if collaborations %}
+            <div class="collaboration-list">
+                {% for collab in collaborations %}
+                    <div class="collaboration-item">
+                        <p><strong>Name:</strong> {{ collab.artist_name }}</p>
+                        <p><strong>Genre:</strong> {{ collab.genre }}</p>
+                        <p><strong>Type of Work:</strong> {{ collab.work_type }}</p>
+                        <p><strong>Location:</strong> {{ collab.location }}</p>
+                        <p><strong>Requirements:</strong> {{ collab.requirement }}</p>
+                        {% if collab.artist_profile %}
+                            <p><strong>Artist Profile:</strong> <a href="{{ collab.artist_profile }}" target="_blank">View Profile</a></p>
+                        {% endif %}
+                        
+                        {% if 'email' in session %}
+                            <a href="{{ url_for('apply', gig_id=collab.id) }}" class="apply-btn">Apply</a>
+                        {% else %}
+                            <p><a href="{{ url_for('login') }}" class="apply-btn1">Log in to apply</a></p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No collaborations found.</p>
+        {% endif %}
+    </div>
+    
+</body>
+</html>

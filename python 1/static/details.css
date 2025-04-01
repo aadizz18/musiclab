@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Montserrat:wght@500&family=Roboto+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+li, a, button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+.lg1 {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 1000;
+    font-size: 1.5rem;
+    color: #42220c;
+}
+
+#amnavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    width: 99%;
+    border-radius: 1rem;
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    background-color: rgba(132, 94, 62, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.nav_links {
+    list-style: none;
+}
+
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+    color: #42220c;
+}
+
+#amnavbar button {
+    padding: 9px 25px;
+    background-color: #42220c;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#amnavbar button:hover {
+    color: #1e1e1e;
+    background-color: #42220c;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('bg2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 60px; /* Increased padding for more space inside the box */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    backdrop-filter: blur(15px); /* Background blur effect */
+    width: 800px; /* Set a specific width */
+    max-width: 1200px; /* Increased max width for a wider box */
+    margin: 20px auto; /* Center the box */
+    font-size: 1.3rem; /* Further increase font size for better readability */
+}
+
+
+h2 {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Add margin below the heading */
+}
+
+.table {
+    width: 100%; /* Keep the table full width */
+    border-collapse: collapse; /* No space between borders */
+}
+
+.table-bordered {
+    border: none; /* No outer border for the table */
+}
+
+.table-bordered th, .table-bordered td {
+    padding: 15px; /* Increased padding for cells */
+    border: none; /* Remove borders from table cells */
+    text-align: left; /* Ensure text alignment */
+}
+
+.button-group {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between the buttons */
+    margin-top: 20px; /* Add some margin above the button group */
+}
+
+.btn-danger, .btn-primary {
+    background-color: #42220c; /* Brown color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add some padding */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.btn-danger:hover, .btn-primary:hover {
+    background-color: #6F4C3E; /* Darker brown on hover */
+}
+/* Music Control Styles */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#musicToggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+}
+
+#musicToggle:hover {
+    transform: scale(1.05);
+}
+
+.volume-slider {
+    width: 80px;
+    -webkit-appearance: none;
+    appearance: none;
+
+    height: 4px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.volume-slider:hover {
+    opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .music-control {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .volume-slider {
+        width: 60px;
+    }
+}

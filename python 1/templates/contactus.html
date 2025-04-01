@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='contactus.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body>
+    <div class="contact-container">
+        <header>
+            <!-- Go Back Button -->
+            <button onclick="history.back()" class="go-back-btn">Go Back</button>
+
+            <h1>Contact Us</h1>
+            <p>Feel free to connect with us in case of any queries.</p>
+        </header>
+        
+        <main>
+            <div class="contact-box">
+                <!-- Change form action to the Flask route "/contactus" -->
+                <form action="{{ url_for('contactus') }}" method="POST">
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 MusicLab. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

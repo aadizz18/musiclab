@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Our Services - MusicLab</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='services.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="static/logo1.png" alt="MusicLab Logo">
+        </div>
+
+        <div class="inner-main-nav">
+            <ul>
+                <li><a href="{{ url_for('home') }}" class="{% if request.path == url_for('home') %}active{% endif %}">HOME</a></li>
+                <li><a href="{{ url_for('view') }}" class="{% if request.path == url_for('view') %}active{% endif %}">GIGS</a></li>
+                <li><a href="{{ url_for('colab') }}" class="{% if request.path == url_for('colab') %}active{% endif %}">COLLAB</a></li>
+                <li><a href="{{ url_for('me') }}" class="{% if request.path == url_for('me') %}active{% endif %}">ME</a></li>
+                <li><a href="{{ url_for('about') }}" class="{% if request.path == url_for('about') %}active{% endif %}">ABOUT</a></li>
+                <li><a href="{{ url_for('login') }}" class="{% if request.path == url_for('login') %}active{% endif %}">LOGIN</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="services-container">
+            <h1>Our Services</h1>
+            <div class="service-boxes">
+                <div class="service-box">
+                    <img src="service1.jpg" alt="Service 1">
+                    <h3>Music Production</h3>
+                    <p>We offer high-quality music production services, from mixing to mastering.</p>
+                </div>
+                <div class="service-box">
+                    <img src="service2.jpg" alt="Service 2">
+                    <h3>Live Gigs</h3>
+                    <p>We help you plan and execute live gigs with the best sound and experience.</p>
+                </div>
+                <div class="service-box">
+                    <img src="service3.jpg" alt="Service 3">
+                    <h3>Collaboration</h3>
+                    <p>Collaborate with talented artists to create something unique and amazing.</p>
+                </div>
+                <div class="service-box">
+                    <img src="service4.jpg" alt="Service 4">
+                    <h3>Consultation</h3>
+                    <p>Get expert advice on how to improve your music career and grow your audience.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

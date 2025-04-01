@@ -1,0 +1,285 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Montserrat:wght@500&display=swap');
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add padding to the main container for some space between page and collaborations */
+.collaboration-container {
+    padding: 60px;
+    text-align: center;
+}
+
+/* Navigation styles */
+.inner-main-nav {
+    max-width: 2000px;
+    margin: auto;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 2;
+}
+
+.inner-main-nav ul {
+    text-align: right;
+    margin-left: 330px;
+    margin-right: 330px;
+    padding: 25px 0;
+}
+
+.inner-main-nav ul li a:hover {
+    color: #be1d1d;
+    transition: color 0.3s ease;
+}
+
+.inner-main-nav ul li {
+    float: none;
+    display: inline-block;
+}
+
+.inner-main-nav ul li:nth-child(1),
+.inner-main-nav ul li:nth-child(2),
+.inner-main-nav ul li:nth-child(3) {
+    float: left;
+}
+
+.inner-main-nav ul li a {
+    margin: 0 25px;
+    text-decoration: none;
+    color: #4a2b0a;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo img {
+    width: 100%;
+}
+
+/* Collaboration Section */
+.collaboration-container h1 {
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Collaboration List Container */
+.collaboration-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 30px; /* Increased gap between items */
+    margin: 0 auto;
+}
+
+/* Individual Collaboration Item */
+.collaboration-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px; /* Increased padding */
+    width: 500px; /* Increased width */
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Left-align the content */
+}
+
+.collaboration-item p {
+    margin-bottom: 12px; /* Increased spacing between paragraphs */
+    font-size: 16px;
+}
+
+/* Apply Button */
+.apply-btn {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #be1d1d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    width: 150px; /* Adjust width as needed */
+    display: inline-block; /* Make sure it respects the width */
+}
+
+.apply-btn1:hover {
+    background-color: #a21414;
+}
+.apply-btn:hover {
+    background-color: #a21414;
+}
+.apply-btn1 {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #be1d1d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    width: 150px; /* Adjust width as needed */
+    display: inline-block; /* Make sure it respects the width */
+}
+
+
+/* Placeholder or Empty State Styling */
+.collaboration-item .no-info {
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .inner-main-nav ul {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .collaboration-list {
+        flex-direction: column;
+        gap: 15px; /* Reduced gap on mobile */
+    }
+
+    .collaboration-item {
+        width: 100%;
+        height: auto;
+    }
+
+    .collaboration-item p {
+        font-size: 14px; /* Slightly smaller text on mobile */
+    }
+
+    .apply-button {
+        font-size: 14px; /* Smaller button text on mobile */
+    }
+}
+
+.inner-main-nav ul li a.active {
+    color: red; /* Change the link color to red */
+    font-weight: bold; /* Optional: Make the active link bold for emphasis */
+}
+
+/* Additional hover effect if needed */
+.inner-main-nav ul li a:hover {
+    color: #be1d1d;
+    transition: color 0.3s ease;
+}
+.logo img:hover {
+    transform: rotate(10deg) scale(1.1);
+    filter: drop-shadow(0 0 5px rgba(190, 29, 29, 0.3));
+  }
+/* Music Control Styles */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#musicToggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+}
+
+#musicToggle:hover {
+    transform: scale(1.05);
+}
+
+.volume-slider {
+    width: 80px;
+    -webkit-appearance: none;
+    appearance: none;
+
+    height: 4px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.volume-slider:hover {
+    opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .music-control {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .volume-slider {
+        width: 60px;
+    }
+}

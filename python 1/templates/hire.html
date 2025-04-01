@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicLab</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='hire.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body>
+    <!-- Go Back Button fixed at the top left -->
+    <a href="javascript:history.back()" class="go-back-btn">Go Back</a>
+
+    {% if 'email' not in session %}
+        <!-- If user is not logged in, display options to login or go back -->
+        <div class="login-prompt">
+            <p>Please <a href="{{ url_for('login') }}">log in</a> to submit a gig.</p>
+        </div>
+        
+    {% else %}
+        <!-- If user is logged in, display the form to upload gigs -->
+        <form autocomplete="off" class="form" id="gigForm" method="POST" action="{{ url_for('hire') }}" enctype="multipart/form-data">
+            <p class="title">Upload Gigs</p>
+            <div class="form-group">
+                <label>
+                    <input type="text" name="theme" placeholder="Theme of the event" required>
+                </label>
+                <label>
+                    <input type="text" name="genre" placeholder="Genre of music" required>
+                </label>
+                <label>
+                    <input type="number" name="audience" min="1" placeholder="Audience capacity" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="text" name="venue" placeholder="Venue" required>
+                </label>
+                <label>
+                    <input type="file" name="img1">
+                </label>
+                <label>
+                    <input type="file" name="img2">
+                </label>
+            </div>
+        
+            <button class="submit" type="submit">Submit</button>
+            <p class="signin">view gigs?
+                <a href="{{ url_for('view') }}" class="view">Gigs</a>
+            </p>
+        </form>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,258 @@
+/* Importing Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExam5iZDN2dHRmZXZsajJpajRza2ptNDE0MXFzbm8yNHJvbjFmcmgweiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6ZtdARd9exOTKPOo/giphy.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0ch;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 800px;
+    height: 500px;
+    background: rgba(255,255,255,0.012);
+    backdrop-filter: blur(25px);
+    padding: 34px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+  font-size: 28px;
+ color:#000;
+ font-weight: 600;
+ letter-spacing: 0.3px;
+ position: relative;
+ text-align: center;
+ margin-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap:20px;
+    flex-wrap: wrap;
+}
+
+.form label{
+  flex: 1;
+    position: relative;
+}
+
+.form label input {
+  width: 100%;
+  padding: 15px 15px 20px 15px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  background: rgba(255,255,255,0.15);
+}
+
+.form label input+span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: #000;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label input:placeholder-shown+ span {
+  top: 15px;
+  font-size: 0.9es;
+}
+
+.form label input:focus+span,
+.form label input:valid+span {
+  top:30px;
+  font-size: 0.7es;
+  font-weight: 600;
+}
+.form label input:valid+span{
+    color: rgba(255,255,255,0.7);
+}
+.submit {
+    border: none;
+    outline: none;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 10px;
+    color: #000;
+    font-size: 16px;
+    transform: 0.3s ease;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+}
+.submit:hover{
+    background: rgba(0,0,0,0.25);
+}
+.signin{
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+}
+.signin a{
+    color: #000;
+    text-decoration: none;
+}
+.signin a:hover{
+    text-decoration: underline;
+}
+
+.gender-select ,.type-select{
+  width: 100%; /* Set width to 100% */
+  height: 95%;
+  padding: 15px 15px 20px 15px; /* Padding */
+  font-size: 1rem; /* Font size */
+  border: none; /* Remove default border */
+  border-radius: 10px; /* Match input border-radius */
+  background: rgba(255, 255, 255, 0.15); /* Background color */
+  color: #000; /* Text color */
+  appearance: none; /* Remove default dropdown arrow */
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"%3E%3Cpath fill="%23000" d="M6 8l4-4H2z"/%3E%3C/svg%3E'); /* Custom arrow */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-position: right 10px center; /* Position the custom arrow */
+  background-size: 12px; /* Size of the custom arrow */
+}
+
+.gender-select:focus,.type-select:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: transparent; /* Keep border transparent on focus */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add shadow on focus */
+}
+.gender-select option {
+  color: #000; /* Set option text color to black */
+  background: rgba(255, 255, 255, 1); /* Optional: Set background for options */
+}
+.type-select {
+  width: 100%; /* Set width to 100% */
+  height: 95%;
+  padding: 15px 15px 20px 15px; /* Padding */
+  font-size: 1rem; /* Font size */
+  border: none; /* Remove default border */
+  border-radius: 10px; /* Match input border-radius */
+  background: rgba(255, 255, 255, 0.15); /* Background color */
+  color: #000; /* Text color */
+  appearance: none; /* Remove default dropdown arrow */
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"%3E%3Cpath fill="%23000" d="M6 8l4-4H2z"/%3E%3C/svg%3E'); /* Custom arrow */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-position: right 10px center; /* Position the custom arrow */
+  background-size: 12px; /* Size of the custom arrow */
+}
+
+.type-select:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: transparent; /* Keep border transparent on focus */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add shadow on focus */
+}
+.type-select option,
+.type-select option {
+  color: #000; /* Set option text color to black */
+  background: rgba(255, 255, 255, 1); /* Optional: Set background for options */
+}
+/* Music Control Styles */
+.music-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 8px 15px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.music-control:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#musicToggle {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+}
+
+#musicToggle:hover {
+  transform: scale(1.05);
+}
+
+.volume-slider {
+  width: 80px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.volume-slider:hover {
+  opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .music-control {
+      top: 10px;
+      right: 10px;
+      padding: 6px 12px;
+  }
+  
+  .volume-slider {
+      width: 60px;
+  }
+}
+

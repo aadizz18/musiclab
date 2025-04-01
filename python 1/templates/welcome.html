@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MusicLab</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+         <img src="static/logo1.png" alt="">
+ 
+     </div>
+ 
+     <div class="inner-main-nav">
+         <ul>     
+                 <li><a href="{{ url_for('home') }}" class="{% if request.path == url_for('home') %}active{% endif %}">HOME</a></li>
+                 <li><a href="{{ url_for('view') }}" class="{% if request.path == url_for('view') %}active{% endif %}">GIGS</a></li>
+                 <li><a href="{{ url_for('colab') }}" class="{% if request.path == url_for('colab') %}active{% endif %}">COLLAB</a></li>
+                 <li><a href="{{ url_for('me') }}" class="{% if request.path == url_for('me') %}active{% endif %}">ME</a></li>
+                 <li><a href="{{ url_for('about') }}" class="{% if request.path == url_for('about') %}active{% endif %}">ABOUT</a></li>
+                 <li><a href="{{ url_for('feedback') }}" class="{% if request.path == url_for('feedback') %}active{% endif %}">FEEDBACK</a></li>
+                 <li><a href="{{ url_for('contactus') }}" class="{% if request.path == url_for('contactus') %}active{% endif %}">CONTACT US</a></li>
+                 <li><a href="{{ url_for('login') }}" class="{% if request.path == url_for('login') %}active{% endif %}">LOGIN</a></li>
+
+             </ul>
+         </div>
+     </header>
+
+    <header id="amheader">
+        <main>
+            <section>
+                <h3>Welcome To</h3>&nbsp<h3 id="jtlogo">MUSICLAB.COM</h3>
+                <p>"Dive Into Your Passion"</p>
+                <a class="btnone" href="{{ url_for('login') }}">LOGIN</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btntwo" href="{{ url_for('register') }}">REGISTER</a>
+            </section>
+        </main>
+    </header>
+
+    <footer id="amfut">
+        <p>&copy; 2025 MusicLab. All Rights Reserved.</p>
+        <p><a id="map-link" href="https://www.google.com/maps/place/Pillai+College+of+Engineering,+New+Panvel+(Autonomous)/@18.990201,73.1250952,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7e866de88667f:0xc1c5d5badc610f5f!8m2!3d18.990201!4d73.1276701!16s%2Fm%2F0gjcvbf?entry=ttu&g_ep=EgoyMDI1MDMxMS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank">View My Location on Google Maps</a></p>
+    </footer>
+
+    <script src="idk.js"></script>
+</body>
+</html> 

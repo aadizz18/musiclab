@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Montserrat:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+body {
+    /* Darker music-inspired background */
+    background-color: #1f1c2c;  /* Base color */
+    background-image: url('https://img.icons8.com/ios/452/music.png'); /* Subtle music note icon */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 15%;
+    background-attachment: fixed;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1f1c2c, #928DAB); /* Cool dark-to-light gradient */
+    background-size: cover;
+    background-position: center;
+}
+
+.about-section {
+    background: rgba(255, 255, 255, 0.9);  /* Slightly transparent white background */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+    transform: translateY(-50px); /* Move feedback box a bit up */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+form {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4a2b0a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #be1d1d;
+}
+
+button:active {
+    background-color: #d54f4f;
+}
+
+/* ========== Floating Music Notes ========== */
+.floating-notes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent the notes from interfering with other UI elements */
+    z-index: 1000; /* Make sure it's above other content */
+}
+
+.note {
+    position: absolute;
+    opacity: 0.7;
+    z-index: 999;
+    pointer-events: none;
+}
+
+/* Floating animation that moves the notes around */
+@keyframes floatAround {
+    0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translateX(20vw) translateY(-20vh) scale(1.2);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateX(-30vw) translateY(-40vh) scale(1.1);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateX(10vw) translateY(-50vh) scale(1.3);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(-10vw) translateY(-80vh) scale(1.5);
+        opacity: 0.5;
+    }
+}
+.instrument {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(100px) translateY(-100px);
+    }
+    50% {
+        transform: translateX(-150px) translateY(50px);
+    }
+    75% {
+        transform: translateX(200px) translateY(200px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+/* Music Control Styles */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#musicToggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+}
+
+#musicToggle:hover {
+    transform: scale(1.05);
+}
+
+.volume-slider {
+    width: 80px;
+    -webkit-appearance: none;
+    appearance: none;
+
+    height: 4px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.volume-slider:hover {
+    opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .music-control {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .volume-slider {
+        width: 60px;
+    }
+}

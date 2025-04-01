@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Gigs</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='view.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="static/logo1.png" alt="MusicLab Logo">
+        </div>
+
+        <div class="inner-main-nav">
+            <ul>
+                <li><a href="{{ url_for('home') }}" class="{% if request.path == url_for('home') %}active{% endif %}">HOME</a></li>
+                <li><a href="{{ url_for('view') }}" class="{% if request.path == url_for('view') %}active{% endif %}">GIGS</a></li>
+                <li><a href="{{ url_for('colab') }}" class="{% if request.path == url_for('colab') %}active{% endif %}">COLLAB</a></li>
+                <li><a href="{{ url_for('me') }}" class="{% if request.path == url_for('me') %}active{% endif %}">ME</a></li>
+                <li><a href="{{ url_for('about') }}" class="{% if request.path == url_for('about') %}active{% endif %}">ABOUT</a></li>
+
+                {% if 'email' in session %}
+                    <li><a href="{{ url_for('logout') }}" class="{% if request.path == url_for('logout') %}active{% endif %}">LOGOUT</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}" class="{% if request.path == url_for('login') %}active{% endif %}">LOGIN</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <h2>Gigs</h2>
+    
+        {% if gigs %}
+            <div class="gig-list">
+                {% for gig in gigs %}
+                    <div class="gig-item">
+                        <!-- Image section at the top half -->
+                        {% if gig.img1 %}
+                            <img src="{{ url_for('image', gig_id=gig.id, image_num=1) }}" alt="Gig Image 1">
+                        {% else %}
+                            <div class="no-image">No Photo Available</div>
+                        {% endif %}
+                        
+                        <div class="details">
+                            <h3>{{ gig.theme }}</h3>
+                            <p><strong>Genre:</strong> {{ gig.genre }}</p>
+                            <p><strong>Audience Capacity:</strong> {{ gig.audience }}</p>
+                            <p><strong>Venue:</strong> {{ gig.venue }}</p>
+
+                            <!-- Display second image if available -->
+                            {% if gig.img2 %}
+                                <img src="{{ url_for('image', gig_id=gig.id, image_num=2) }}" alt="Gig Image 2">
+                            {% endif %}
+
+                            <!-- Apply Button -->
+                            {% if 'email' in session %}
+                                <a href="{{ url_for('apply', gig_id=gig.id) }}" class="apply-btn">Apply</a>
+                            {% else %}
+                                <p><a href="{{ url_for('login') }}" class="apply-btn1">Log in to apply</a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No gigs available.</p>
+        {% endif %}
+    </main>
+    
+</body>
+</html>

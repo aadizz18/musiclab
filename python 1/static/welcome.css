@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Montserrat:wght@500&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+:root {
+  --primarycolor: #4a2b0a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lexend Deca', sans-serif;
+}
+.inner-main-nav
+{
+    max-width: 2000px;
+    margin:auto;
+   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.15)),url("orche.jpeg");
+   background-repeat: no-repeat;
+   background-size:cover;
+   background-position: center ;
+  /* Optionally, add a parallax effect */
+  background-attachment: fixed; 
+  z-index: 2; 
+}
+
+.inner-main-nav ul
+{
+    text-align: right;
+    margin-left: 330px;
+    margin-right: 330px;
+    padding: 25px 0;
+}
+
+/* Hover effect for links in navigation */
+.inner-main-nav ul li a:hover {
+  color: #be1d1d;  /* Change the text color to white when hovered */
+  transition: color 0.3s ease;  /* Smooth transition effect for color */
+}
+
+
+.inner-main-nav ul li
+{
+    float: none;
+    display: inline-block;
+}
+.inner-main-nav ul li:nth-child(1),
+.inner-main-nav ul li:nth-child(2),
+.inner-main-nav ul li:nth-child(3)
+{
+    float: left;
+}
+
+.inner-main-nav ul li a 
+{
+    margin: 0 25px;
+    text-decoration: none;
+    color: #4a2b0a;
+}
+#amheader {
+  width: 100%;
+  height: 85vh; /* Adjusted the height so the content fits */
+  background-color: #333; 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.15)),url("orche.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  margin-top: 0; /* Adjust margin-top to space out the header from the navigation bar */
+  padding-bottom: 10px;
+  text-align: top;
+}
+
+
+.logo
+{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.logo img
+{
+width: 100%;
+}
+
+#amfut {
+  width: 100%;
+  background-color: #4a2b0a;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+
+  padding: 20px;
+  text-align: center;
+  color: #be5607;
+  /* Optional additional styles for footer */
+}
+
+#map-link
+{
+  color:#be5607 ;
+}
+main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #4a2b0a;
+  padding-top: 20px; /* Add padding to create spacing */
+}
+
+
+section h3 {
+  font-size: 35px;
+    font-weight: 200;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 2px black;
+    margin-top: 0px;
+    text-align: center;
+}
+
+section h1 {
+  margin: 30px 0 20px 0;
+  font-size: 40px;
+  font-weight: 700;
+  text-shadow: 2px 1px 5px black;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+section p {
+  font-size: 25px;
+  word-spacing: 2px;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 1px black;
+}
+
+section a {
+  padding: 12px 30px;
+  border-radius: 4px;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 3px;
+  transition: all 0.5s ease;
+}
+

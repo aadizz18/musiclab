@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Feedback - MusicLab</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='feedback.css') }}">
+    <style>
+        /* Existing styles... */
+
+        /* Go Back button styles */
+        .go-back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #4a2b0a;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2000; /* Make sure it's on top */
+            transition: background-color 0.3s ease;
+        }
+
+        .go-back-btn:hover {
+            background-color: #be1d1d;
+        }
+
+        .go-back-btn:active {
+            background-color: #d54f4f;
+        }
+    </style>
+</head>
+<body>
+    <!-- Go Back Button -->
+    <button class="go-back-btn" onclick="window.history.back()">Go Back</button>
+
+    <header>
+        <!-- You can add a navigation bar or logo here -->
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="about-section">
+                <h1>Feedback</h1>
+                <p>We would love to hear your thoughts!</p>
+                <form id="feedbackForm" action="{{ url_for('submit_feedback') }}" method="POST">
+                    <textarea name="feedback" placeholder="Write your feedback here..." required></textarea>
+                    <br>
+                    <button type="submit">Send Feedback</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Any additional JavaScript if needed
+    </script>
+</body>
+</html>
