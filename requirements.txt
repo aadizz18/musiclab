@@ -66,3 +66,4 @@ urllib3==2.2.2
 uvicorn==0.30.6
 websockets==12.0
 Werkzeug==3.0.4
+gunicorn==21.2.0
